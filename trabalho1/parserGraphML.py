@@ -22,7 +22,7 @@ graphmlET.set('xmlns:xsi','http://www.w3.org/2001/XMLSchema-instance')
 graphmlET.set('xsi:schemaLocation','http://graphml.graphdrawing.org/xmlns http://graphml.graphdrawing.org/xmlns/1.0/graphml.xsd')
 graphET = ET.SubElement(graphmlET,'graph')
 graphET.set('id', 'G')
-graphET.set('edgedefault','undirected')
+graphET.set('edgedefault','directed')
 try:
 	nodeList = [];
 	nodesAdded = 0;

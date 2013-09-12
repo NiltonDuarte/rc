@@ -7,14 +7,22 @@ class rcGraph:
 		self.g = load_graph(fileName)
 
 	def drawGraph(self, fileName):
-		graph_draw(self.g, vertex_text=self.g.vertex_index, vertex_font_size=8,output_size=(1000, 1000), output=fileName)
+		graph_draw(self.g,output_size=(1000, 1000), output=fileName)#, vertex_text=self.g.vertex_index, vertex_font_size=8)
+		
+	def drawARFGraph(self, fileName):
+		pos = arf_layout(self.g, max_iter=0)
+		graph_draw(self.g, pos=pos, output=fileName)
+		
+	def drawSFDPGraph(self, fileName):
+		pos = sfdp_layout(self.g)
+		graph_draw(self.g, pos=pos, output=fileName)
 
-
-	def graphDegreeHistogram(self):
+	""" funcao obsoleta
+	def degreeHistogram(self):
 		vertexDegreeFrequencies = [0]*10
 
 		for v in self.g.vertices():
-			vertexDegree = v.out_degree()
+			vertexDegree = v.in_degree()
 			if len(vertexDegreeFrequencies) > vertexDegree:
 				vertexDegreeFrequencies[vertexDegree] += 1
 			
@@ -23,14 +31,34 @@ class rcGraph:
 					vertexDegreeFrequencies.append(0)
 				vertexDegreeFrequencies[vertexDegree] += 1
 				print "degree = ", vertexDegree
-
-		print vertexDegreeFrequencies
-		print max(vertexDegreeFrequencies)
 		return vertexDegreeFrequencies
+	"""
+	
+	def diameter(self):
+		distance, source_target = pseudo_diameter(self.g)
+		return distance, source_target
+		
+	def vertexHist(self, direction):
+		return vertex_hist(self.g,direction)
+		
+	def distanceHistogram(self):
+		return distance_histogram(self.g)
+		
+		
+		
 
 fileName = "mygraphML.xml"
 
-g = rcGraph(fileName)
-g.g.list_properties()
-#print g.g.vertex(100).list_properties["_graphml_vertex_id"]
-print(g.g)
+o = rcGraph(fileName)
+o.g.list_properties()
+#o.drawSFDPGraph("graph-draw-sfdp.png")
+print(o.g)
+print o.distanceHistogram()
+
+
+
+
+#dummy = katz(o.g)
+#graph_draw(o.g,output="test_katz.png")
+#pos = fruchterman_reingold_layout(o.g, n_iter=1000)
+#graph_draw(o.g, pos=pos, output="graph-draw-fr.png")
