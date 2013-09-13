@@ -38,11 +38,36 @@ class rcGraph:
 		distance, source_target = pseudo_diameter(self.g)
 		return distance, source_target
 		
-	def vertexHist(self, direction):
+	def vertexHistogram(self, direction):
 		return vertex_hist(self.g,direction)
 		
 	def distanceHistogram(self):
 		return distance_histogram(self.g)
+		
+	def influenciaConjunta(self, degree):
+		"""retorna a media de grau dos vertices apontados pelos vertices mais influentes da rede,
+		vertices influentes serao os vertices com in-degree alto"""
+		sumNeighbours = 0;
+		sumDegree = 0;
+		vertexInfluenceList = []
+		
+		for v in self.g.vertices():
+			vertexDegree = v.in_degree()
+			if vertexDegree > degree:
+				vertexNeighbours = 0
+				vertexNeighboursDegree = 0
+				for neighbour in v.out_neighbours():
+					neighbourDegree = neighbour.in_degree()
+					vertexNeighbours +=1
+					vertexNeighboursDegree += neighbourDegree
+				vertexInfluenceList.append(vertexNeighboursDegree/vertexNeighbours if vertexNeighbours > 0 else 0)
+				sumNeighbours += vertexNeighbours
+				sumDegree += vertexNeighboursDegree
+			
+		print vertexInfluenceList
+		print sum(vertexInfluenceList) / len(vertexInfluenceList)
+		return sumDegree/sumNeighbours
+					
 		
 		
 		
@@ -53,7 +78,8 @@ o = rcGraph(fileName)
 o.g.list_properties()
 #o.drawSFDPGraph("graph-draw-sfdp.png")
 print(o.g)
-print o.distanceHistogram()
+print o.vertexHistogram("in")
+print o.influenciaConjunta(20)
 
 
 
