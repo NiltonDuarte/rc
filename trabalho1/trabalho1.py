@@ -64,10 +64,10 @@ class rcGraph:
 				sumNeighbours += vertexNeighbours
 				sumDegree += vertexNeighboursDegree
 			
-		print vertexInfluenceList
-		print sum(vertexInfluenceList) / len(vertexInfluenceList)
-		return sumDegree/sumNeighbours
-					
+		print vertexInfluenceList									#nao da no mesmo
+		print sum(vertexInfluenceList) / len(vertexInfluenceList)	#media das medias
+		return sumDegree/sumNeighbours								#media entre todos
+																		
 		
 		
 		
@@ -80,7 +80,6 @@ o.g.list_properties()
 print(o.g)
 print o.vertexHistogram("in")
 print o.influenciaConjunta(20)
-
 
 
 
