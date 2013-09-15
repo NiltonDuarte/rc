@@ -1,4 +1,5 @@
 from graph_tool.all import *
+import matplotlib.pyplot as plot
 
 
 class rcGraph:
@@ -44,6 +45,14 @@ class rcGraph:
 	def distanceHistogram(self):
 		return distance_histogram(self.g)
 		
+	def plotHistogram(self, histogram):
+		n, bins, patches = plot.hist(histogram)
+		plot.xlabel('Vertices')
+		plot.ylabel('Grau')
+		plot.title(r'Distribuicao de grau de vertices')
+		plot.show()
+		
+		
 	def influenciaConjunta(self, degree):
 		"""retorna a media de grau dos vertices apontados pelos vertices mais influentes da rede,
 		vertices influentes serao os vertices com in-degree alto"""
@@ -78,8 +87,10 @@ o = rcGraph(fileName)
 o.g.list_properties()
 #o.drawSFDPGraph("graph-draw-sfdp.png")
 print(o.g)
-print o.vertexHistogram("in")
+dgHist = o.vertexHistogram("in")
+print dgHist
 print o.influenciaConjunta(20)
+o.plotHistogram(dgHist)
 
 
 
