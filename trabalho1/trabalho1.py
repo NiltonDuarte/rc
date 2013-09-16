@@ -2,6 +2,28 @@ from graph_tool.all import *
 import matplotlib.pyplot as plot
 import numpy
 import scipy.misc as spy
+import sys
+import os
+
+class matPlot:
+	
+	def __init__(self, numbins):
+		self.numbins = numbins
+		
+	def plotHistogram(self, histogram, xlabel, ylabel, title):
+		"""Funcao para plot do Histograma"""
+		n, bins, patches = plot.hist(histogram, self.numbins)
+		plot.xlabel(xlabel)
+		plot.ylabel(ylabel)
+		plot.title(title)
+		plot.show()
+		
+	def writeHistogram(self, histogram, fileName):
+		"""Escreve em arquivo dados para plot"""
+		fileHist = open(fileName, 'w')
+		for element in histogram:
+			fileHist.write(str(element)+'\n')
+		fileHist.close()
 
 
 class rcGraph:
@@ -19,14 +41,6 @@ class rcGraph:
 	def drawSFDPGraph(self, fileName):
 		pos = sfdp_layout(self.g)
 		graph_draw(self.g, pos=pos, output=fileName)
-		
-	def plotHistogram(self, histogram, numbins, xlabel, ylabel, title):
-		"""Funcao para plot do Histograma"""
-		n, bins, patches = plot.hist(histogram, numbins)
-		plot.xlabel(xlabel)
-		plot.ylabel(ylabel)
-		plot.title(title)
-		plot.show()
 
 	""" funcao obsoleta
 	def degreeHistogram(self):
@@ -148,7 +162,10 @@ class rcGraph:
 		
 		
 
-fileName = "mygraphML.xml"
+fileName = sys.argv[1]
+dirName = './'+sys.argv[1][:-4]
+if not os.path.exists(dirName):
+	os.makedirs(dirName)
 
 o = rcGraph(fileName)
 o.g.list_properties()
@@ -181,21 +198,40 @@ print 'Iniciando global clustering'
 globalClustCoef = o.globalGraphClustering()
 print 'Fim de global clustering'
 
+statsFile = open(dirName+'/stats.txt', 'w')
+
 print 'Graph density = ', o.graphDensity()
+statsFile.write('Graph density = '+str(o.graphDensity())+'\n')
 print 'Degree average = ', vertexAverage[0], ' +- ', vertexAverage[1]
+statsFile.write('Degree average = '+str(vertexAverage[0])+' +- '+str(vertexAverage[1])+'\n')
 print 'Average distance = ', o.averageDistance(distanceHist)
+statsFile.write('Average distance = '+str(o.averageDistance(distanceHist))+'\n')
 print 'Diameter = ', diameterRelation[0], ' | Source = ', o.g.vertex_properties['_graphml_vertex_id'][diameterRelation[1][0]],' | Target = ', o.g.vertex_properties['_graphml_vertex_id'][diameterRelation[1][1]]
+statsFile.write('Diameter = '+str(diameterRelation[0])+' | Source = '+str(o.g.vertex_properties['_graphml_vertex_id'][diameterRelation[1][0]])+' | Target = '+str(o.g.vertex_properties['_graphml_vertex_id'][diameterRelation[1][1]])+'\n')
 print 'Average local clustering = ', averageLocalClustering[0], ' +- ', averageLocalClustering[1]
+statsFile.write('Average local clustering = '+str(averageLocalClustering[0])+' +- '+str(averageLocalClustering[1])+'\n')
 print 'Global Graph clustering = ', globalClustCoef[0], ' +- ', globalClustCoef[1]
+statsFile.write('Global Graph clustering = '+str(globalClustCoef[0])+' +- '+str(globalClustCoef[1])+'\n')
 print 'Global clustering = ', globalClust
+statsFile.write('Global clustering = '+str(globalClust)+'\n')
 print 'Major influence = ', majorCentrality
+statsFile.write('Major influence = '+str(majorCentrality)+'\n')
+
+statsFile.close()
+
+pyplot = matPlot(50)
 
 #Plots ruins com grafos mal distribuidos
-o.plotHistogram(degreeHist, 50, 'n de Vertices', 'Grau', 'Grau de vertices')
-o.plotHistogram(frequencyDegreeHist, 50, 'P[D=k]', 'Grau', 'Distribuicao de grau')
-o.plotHistogram(frequencyDistanceHist, 50, 'Frequencia de distancia', 'Distancia', 'Distribuicao de distancia')
-o.plotHistogram(localClust.a, 50, 'Coeficiente de clusterizacao local', 'Vertices', 'Distribuicao de clusterizacao')
-o.plotHistogram(centrality.a, 50, 'Coeficiente de centralidade', 'Vertices', 'Centralidade baseada em eigenvalue')
+pyplot.plotHistogram(degreeHist, 'n de Vertices', 'Grau', 'Grau de vertices')
+pyplot.writeHistogram(degreeHist[0], dirName+'/grauHist.txt')
+pyplot.plotHistogram(frequencyDegreeHist, 'P[D=k]', 'Grau', 'Distribuicao de grau')
+pyplot.writeHistogram(frequencyDegreeHist, dirName+'/grauDistrHist.txt')
+pyplot.plotHistogram(frequencyDistanceHist, 'Frequencia de distancia', 'Distancia', 'Distribuicao de distancia')
+pyplot.writeHistogram(frequencyDistanceHist, dirName+'/distDistrHist.txt')
+pyplot.plotHistogram(localClust.a, 'Coeficiente de clusterizacao local', 'Vertices', 'Distribuicao de clusterizacao')
+pyplot.writeHistogram(localClust.a, dirName+'/coefLocalClustHist.txt')
+pyplot.plotHistogram(centrality.a, 'Coeficiente de centralidade', 'Vertices', 'Centralidade baseada em eigenvector')
+pyplot.writeHistogram(centrality.a, dirName+'/coefCentralidadeHist.txt')
 
 
 """Bar plot
