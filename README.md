@@ -1,6 +1,6 @@
 rc
 ==
 
-disciplica de redes complexas
+disciplina de redes complexas
 
 teste

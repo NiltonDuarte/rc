@@ -1,7 +1,7 @@
 all: build
 
 build:
-	python trabalho1.py 
+	python trabalho1.py
 
 clean:
 	rm -f *.pyc *.py~
