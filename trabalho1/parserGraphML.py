@@ -1,5 +1,6 @@
 import xml.etree.ElementTree as ET
 import string
+import sys
 
 """
 <graphml>
@@ -10,8 +11,8 @@ import string
 </graphml>
 """
 
-outFileName = "mygraphML"
-inFileName = "Wiki-Vote.txt"
+outFileName = sys.argv[2]
+inFileName = sys.argv[1]
 
 inFile = open(inFileName)
 print inFile
