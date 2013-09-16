@@ -20,8 +20,8 @@ class rcGraph:
 		pos = sfdp_layout(self.g)
 		graph_draw(self.g, pos=pos, output=fileName)
 		
-	def plotHistogram(self, histogram, xlabel, ylabel, title):
-		n, bins, patches = plot.hist(histogram, 50)
+	def plotHistogram(self, histogram, bins, xlabel, ylabel, title):
+		n, bins, patches = plot.hist(histogram, bins)
 		plot.xlabel(xlabel)
 		plot.ylabel(ylabel)
 		plot.title(title)
@@ -133,9 +133,9 @@ print 'Average distance = ', o.averageDistance(distanceHist)
 print 'Diameter = ', diameterRelation[0], ' | Source = ', o.g.vertex_properties['_graphml_vertex_id'][diameterRelation[1][0]],' | Target = ', o.g.vertex_properties['_graphml_vertex_id'][diameterRelation[1][1]]
 
 #Plots ruins com grafos mal distribuidos
-o.plotHistogram(degreeHist, 'n de Vertices', 'Grau', 'Grau de vertices')
-o.plotHistogram(frequencyDegreeHist, 'P[D=k]', 'Grau', 'Distribuicao de grau')
-o.plotHistogram(frequencyDistanceHist, 'Frequencia de distancia', 'Distancia', 'Distribuicao de distancia')
+o.plotHistogram(degreeHist, 50, 'n de Vertices', 'Grau', 'Grau de vertices')
+o.plotHistogram(frequencyDegreeHist, 50, 'P[D=k]', 'Grau', 'Distribuicao de grau')
+o.plotHistogram(frequencyDistanceHist, 100, 'Frequencia de distancia', 'Distancia', 'Distribuicao de distancia')
 
 
 """Bar plot
