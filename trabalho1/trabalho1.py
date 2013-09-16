@@ -1,5 +1,6 @@
 from graph_tool.all import *
 import matplotlib.pyplot as plot
+import numpy as np
 
 
 class rcGraph:
@@ -41,17 +42,26 @@ class rcGraph:
 		
 	def vertexHistogram(self, direction):
 		return vertex_hist(self.g,direction)
+	
+	def averageVertexDegree(self, direction):
+		return vertex_average(self.g, direction)
+		
+	def degreeDistribution(self, degreeList):
+		degreeFrequency = []
+		for degree in range(len(degreeList)):
+			frequency = degreeList[degree] / self.g.num_vertices()
+			degreeFrequency.append(frequency)
+		return degreeFrequency
 		
 	def distanceHistogram(self):
 		return distance_histogram(self.g)
 		
-	def plotHistogram(self, histogram):
-		n, bins, patches = plot.hist(histogram)
-		plot.xlabel('Vertices')
-		plot.ylabel('Grau')
-		plot.title(r'Distribuicao de grau de vertices')
+	def plotHistogram(self, histogram, xlabel, ylabel, title):
+		n, bins, patches = plot.hist(histogram, 50)
+		plot.xlabel(xlabel)
+		plot.ylabel(ylabel)
+		plot.title(title)
 		plot.show()
-		
 		
 	def influenciaConjunta(self, degree):
 		"""retorna a media de grau dos vertices apontados pelos vertices mais influentes da rede,
@@ -87,10 +97,29 @@ o = rcGraph(fileName)
 o.g.list_properties()
 #o.drawSFDPGraph("graph-draw-sfdp.png")
 print(o.g)
-dgHist = o.vertexHistogram("in")
-print dgHist
-print o.influenciaConjunta(20)
-o.plotHistogram(dgHist)
+
+degreeHist = o.vertexHistogram("in")
+frequencyHist = o.degreeDistribution(degreeHist[0])
+distanceHist = o.distanceHistogram()
+#print degreeHist
+#print frequencyHist
+print distanceHist
+
+#print o.influenciaConjunta(20)
+
+vertexAverage = o.averageVertexDegree("in")
+print 'Degree average = ', vertexAverage[0], ' +- ', vertexAverage[1]
+
+#Plots ruins com grafos mal distribuidos
+o.plotHistogram(degreeHist, 'n de Vertices', 'Grau', 'Grau de vertices')
+o.plotHistogram(frequencyHist, 'P[D=k]', 'Grau', 'Distribuicao de grau')
+
+
+"""Bar plot
+fqHist.append(0)
+plot.bar(dgHist[1], fqHist, align='center')
+plot.show()
+"""
 
 
 
