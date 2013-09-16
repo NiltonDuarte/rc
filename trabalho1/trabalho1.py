@@ -1,6 +1,7 @@
 from graph_tool.all import *
 import matplotlib.pyplot as plot
-import numpy as np
+import numpy
+import scipy.misc as spy
 
 
 class rcGraph:
@@ -18,6 +19,13 @@ class rcGraph:
 	def drawSFDPGraph(self, fileName):
 		pos = sfdp_layout(self.g)
 		graph_draw(self.g, pos=pos, output=fileName)
+		
+	def plotHistogram(self, histogram, xlabel, ylabel, title):
+		n, bins, patches = plot.hist(histogram, 50)
+		plot.xlabel(xlabel)
+		plot.ylabel(ylabel)
+		plot.title(title)
+		plot.show()
 
 	""" funcao obsoleta
 	def degreeHistogram(self):
@@ -40,11 +48,14 @@ class rcGraph:
 		distance, source_target = pseudo_diameter(self.g)
 		return distance, source_target
 		
-	def vertexHistogram(self, direction):
-		return vertex_hist(self.g,direction)
-	
 	def averageVertexDegree(self, direction):
 		return vertex_average(self.g, direction)
+		
+	def vertexHistogram(self, direction):
+		return vertex_hist(self.g,direction)
+		
+	def distanceHistogram(self):
+		return distance_histogram(self.g)
 		
 	def degreeDistribution(self, degreeList):
 		degreeFrequency = []
@@ -53,15 +64,21 @@ class rcGraph:
 			degreeFrequency.append(frequency)
 		return degreeFrequency
 		
-	def distanceHistogram(self):
-		return distance_histogram(self.g)
-		
-	def plotHistogram(self, histogram, xlabel, ylabel, title):
-		n, bins, patches = plot.hist(histogram, 50)
-		plot.xlabel(xlabel)
-		plot.ylabel(ylabel)
-		plot.title(title)
-		plot.show()
+	def averageDistance(self, histogram):
+		dTotal = 0
+		dAverage = 0
+		for i in range(len(histogram[0])):
+			dTotal+= histogram[0][i]*histogram[1][i]
+		comb = spy.comb(self.g.num_vertices(), 2)
+		dAverage = dTotal/comb
+		return dAverage
+	
+	def distanceDistribution(self, histogram):
+		comb = spy.comb(self.g.num_vertices(), 2)
+		distanceFrequency = []
+		for distance in histogram[1][1:]:
+			distanceFrequency.append(histogram[0][distance-1]/comb)
+		return distanceFrequency
 		
 	def influenciaConjunta(self, degree):
 		"""retorna a media de grau dos vertices apontados pelos vertices mais influentes da rede,
@@ -99,20 +116,26 @@ o.g.list_properties()
 print(o.g)
 
 degreeHist = o.vertexHistogram("in")
-frequencyHist = o.degreeDistribution(degreeHist[0])
+frequencyDegreeHist = o.degreeDistribution(degreeHist[0])
 distanceHist = o.distanceHistogram()
+diameterRelation = o.diameter()
+frequencyDistanceHist = o.distanceDistribution(distanceHist)
 #print degreeHist
-#print frequencyHist
-print distanceHist
+#print frequencyDegreeHist
+#print distanceHist
+print frequencyDistanceHist
 
 #print o.influenciaConjunta(20)
 
 vertexAverage = o.averageVertexDegree("in")
 print 'Degree average = ', vertexAverage[0], ' +- ', vertexAverage[1]
+print 'Average distance = ', o.averageDistance(distanceHist)
+print 'Diameter = ', diameterRelation[0], ' | Source = ', o.g.vertex_properties['_graphml_vertex_id'][diameterRelation[1][0]],' | Target = ', o.g.vertex_properties['_graphml_vertex_id'][diameterRelation[1][1]]
 
 #Plots ruins com grafos mal distribuidos
 o.plotHistogram(degreeHist, 'n de Vertices', 'Grau', 'Grau de vertices')
-o.plotHistogram(frequencyHist, 'P[D=k]', 'Grau', 'Distribuicao de grau')
+o.plotHistogram(frequencyDegreeHist, 'P[D=k]', 'Grau', 'Distribuicao de grau')
+o.plotHistogram(frequencyDistanceHist, 'Frequencia de distancia', 'Distancia', 'Distribuicao de distancia')
 
 
 """Bar plot
