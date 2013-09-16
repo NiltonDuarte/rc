@@ -56,7 +56,7 @@ class rcGraph:
 		return distance, source_target
 		
 	def averageVertexProp(self, prop):
-		"""Retorna média de dada propriedade do vértice, como grau ou clusterizacao"""
+		"""Retorna media de dada propriedade do vertice, como grau ou clusterizacao"""
 		return vertex_average(self.g, prop)
 		
 	def vertexHistogram(self, direction):
@@ -98,7 +98,7 @@ class rcGraph:
 		return local_clustering(self.g, undirected=False)
 	
 	def globalClustering(self, localClusArray):
-		"""Retorna coeficiente de clusterizacao global do grafo, utilizando métrica
+		"""Retorna coeficiente de clusterizacao global do grafo, utilizando metrica
 			dos slides"""
 		globalClust = 0
 		for coef in localClusArray:
@@ -110,9 +110,19 @@ class rcGraph:
 			de triangularizacao"""
 		return global_clustering(self.g)
 		
+	def eigenvectorCentrality(self):
+		return eigenvector(self.g)
+		
 	def influenciaConjunta(self, degree):
 		"""retorna a media de grau dos vertices apontados pelos vertices mais influentes da rede,
 		vertices influentes serao os vertices com in-degree alto"""
+		
+		"""Eigenvector centrality
+			Focuses on the connections of neighbours
+			Reveals vertices that are well connected
+			
+			How well is this vertice connected to other well connected people"""
+		
 		sumNeighbours = 0;
 		sumDegree = 0;
 		vertexInfluenceList = []
@@ -151,12 +161,16 @@ distanceHist = o.distanceHistogram()
 diameterRelation = o.diameter()
 frequencyDistanceHist = o.distanceDistribution(distanceHist)
 localClust = o.localClustering()
+centralityTuple = o.eigenvectorCentrality()
+centrality = centralityTuple[1]
+majorCentrality = centralityTuple[0]
 
 #print degreeHist
 #print frequencyDegreeHist
 #print distanceHist
 #print frequencyDistanceHist
 #print (vertex_average(o.g, localClust))
+#print centrality.a
 
 #print o.influenciaConjunta(20)
 
@@ -174,12 +188,14 @@ print 'Diameter = ', diameterRelation[0], ' | Source = ', o.g.vertex_properties[
 print 'Average local clustering = ', averageLocalClustering[0], ' +- ', averageLocalClustering[1]
 print 'Global Graph clustering = ', globalClustCoef[0], ' +- ', globalClustCoef[1]
 print 'Global clustering = ', globalClust
+print 'Major influence = ', majorCentrality
 
 #Plots ruins com grafos mal distribuidos
 o.plotHistogram(degreeHist, 50, 'n de Vertices', 'Grau', 'Grau de vertices')
 o.plotHistogram(frequencyDegreeHist, 50, 'P[D=k]', 'Grau', 'Distribuicao de grau')
 o.plotHistogram(frequencyDistanceHist, 50, 'Frequencia de distancia', 'Distancia', 'Distribuicao de distancia')
 o.plotHistogram(localClust.a, 50, 'Coeficiente de clusterizacao local', 'Vertices', 'Distribuicao de clusterizacao')
+o.plotHistogram(centrality.a, 50, 'Coeficiente de centralidade', 'Vertices', 'Centralidade baseada em eigenvalue')
 
 
 """Bar plot
