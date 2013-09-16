@@ -20,8 +20,9 @@ class rcGraph:
 		pos = sfdp_layout(self.g)
 		graph_draw(self.g, pos=pos, output=fileName)
 		
-	def plotHistogram(self, histogram, xlabel, ylabel, title):
-		n, bins, patches = plot.hist(histogram)
+	def plotHistogram(self, histogram, numbins, xlabel, ylabel, title):
+		"""Funcao para plot do Histograma"""
+		n, bins, patches = plot.hist(histogram, numbins)
 		plot.xlabel(xlabel)
 		plot.ylabel(ylabel)
 		plot.title(title)
@@ -44,24 +45,30 @@ class rcGraph:
 		return vertexDegreeFrequencies
 	"""
 	def graphDensity(self):
+		"""Retorna densidade do grafo"""
 		n = self.g.num_vertices()
 		m = self.g.num_edges()
 		return (2.0*m)/(n*(n-1.0))
 	
 	def diameter(self):
+		"""Retorna diametro do grafo"""
 		distance, source_target = pseudo_diameter(self.g)
 		return distance, source_target
 		
 	def averageVertexProp(self, prop):
+		"""Retorna média de dada propriedade do vértice, como grau ou clusterizacao"""
 		return vertex_average(self.g, prop)
 		
 	def vertexHistogram(self, direction):
+		"""Retorna histograma de grau de vertices"""
 		return vertex_hist(self.g,direction)
 		
 	def distanceHistogram(self):
+		"""Retorna histograma de distancias entre vertices"""
 		return distance_histogram(self.g)
 		
 	def degreeDistribution(self, degreeList):
+		"""Distribuicao de grau de vertices, probabilidade de grau igual a k"""
 		degreeFrequency = []
 		for degree in range(len(degreeList)):
 			frequency = degreeList[degree] / self.g.num_vertices()
@@ -69,6 +76,7 @@ class rcGraph:
 		return degreeFrequency
 		
 	def averageDistance(self, histogram):
+		"""Retorna media da distancia entre vertices"""
 		dTotal = 0
 		dAverage = 0
 		for i in range(len(histogram[0])):
@@ -78,6 +86,7 @@ class rcGraph:
 		return dAverage
 	
 	def distanceDistribution(self, histogram):
+		"""Retorna distribuicao de distancias, frequencia relativa"""
 		comb = spy.comb(self.g.num_vertices(), 2)
 		distanceFrequency = []
 		for distance in histogram[1][1:]:
@@ -85,13 +94,21 @@ class rcGraph:
 		return distanceFrequency
 		
 	def localClustering(self):
+		"""Retorna coeficiente de clusterizacao local"""
 		return local_clustering(self.g, undirected=False)
 	
 	def globalClustering(self, localClusArray):
+		"""Retorna coeficiente de clusterizacao global do grafo, utilizando métrica
+			dos slides"""
 		globalClust = 0
 		for coef in localClusArray:
 			globalClust += coef
 		return globalClust/self.g.num_vertices()
+		
+	def globalGraphClustering(self):
+		"""Retorna coeficiente de clusterizacao global do grafo por um metodo
+			de triangularizacao"""
+		return global_clustering(self.g)
 		
 	def influenciaConjunta(self, degree):
 		"""retorna a media de grau dos vertices apontados pelos vertices mais influentes da rede,
@@ -146,22 +163,23 @@ localClust = o.localClustering()
 vertexAverage = o.averageVertexProp("in")
 averageLocalClustering = o.averageVertexProp(localClust)
 globalClust = o.globalClustering(localClust.a)
-#print 'Iniciando global clustering'
-#globalClustCoef = o.globalClustering()
-#print 'Fim de global clustering'
+print 'Iniciando global clustering'
+globalClustCoef = o.globalGraphClustering()
+print 'Fim de global clustering'
 
 print 'Graph density = ', o.graphDensity()
 print 'Degree average = ', vertexAverage[0], ' +- ', vertexAverage[1]
 print 'Average distance = ', o.averageDistance(distanceHist)
 print 'Diameter = ', diameterRelation[0], ' | Source = ', o.g.vertex_properties['_graphml_vertex_id'][diameterRelation[1][0]],' | Target = ', o.g.vertex_properties['_graphml_vertex_id'][diameterRelation[1][1]]
 print 'Average local clustering = ', averageLocalClustering[0], ' +- ', averageLocalClustering[1]
-#print 'Global clustering = ', globalClustCoef[0], ' +- ', globalClustCoef[1]
+print 'Global Graph clustering = ', globalClustCoef[0], ' +- ', globalClustCoef[1]
 print 'Global clustering = ', globalClust
 
 #Plots ruins com grafos mal distribuidos
-o.plotHistogram(degreeHist, 'n de Vertices', 'Grau', 'Grau de vertices')
-o.plotHistogram(frequencyDegreeHist, 'P[D=k]', 'Grau', 'Distribuicao de grau')
-o.plotHistogram(frequencyDistanceHist, 'Frequencia de distancia', 'Distancia', 'Distribuicao de distancia')
+o.plotHistogram(degreeHist, 50, 'n de Vertices', 'Grau', 'Grau de vertices')
+o.plotHistogram(frequencyDegreeHist, 50, 'P[D=k]', 'Grau', 'Distribuicao de grau')
+o.plotHistogram(frequencyDistanceHist, 50, 'Frequencia de distancia', 'Distancia', 'Distribuicao de distancia')
+o.plotHistogram(localClust.a, 50, 'Coeficiente de clusterizacao local', 'Vertices', 'Distribuicao de clusterizacao')
 
 
 """Bar plot
