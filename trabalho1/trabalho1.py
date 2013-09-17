@@ -186,7 +186,7 @@ centralityHist = vertex_hist(o.g, centralityTuple[1], numpy.linspace(0,0.5,101))
 centrality = centralityTuple[1]
 #majorCentrality = centralityTuple[0]
 
-graph_draw(o.g, output_size=(1000, 1000), vertex_color=centrality, vertex_fill_color=centrality, vertex_size=1, edge_pen_width=0.1, output="centrality"+fileName[:-4]+".png")
+graph_draw(o.g, output_size=(1000, 1000), vertex_color=centrality, vertex_fill_color=centrality, vertex_size=1, edge_pen_width=0, output="centrality"+fileName[:-4]+".png")
 
 
 #print degreeHist
