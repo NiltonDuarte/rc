@@ -178,13 +178,16 @@ print(o.g)
 #diameterRelation = o.diameter()
 #frequencyDistanceHist = o.distanceDistribution(distanceHist)
 #localClust = o.localClustering()
-#localClustHist = vertex_hist(o.g, localClust, numpy.linspace(0,1,11))
+#localClustHist = vertex_hist(o.g, localClust, numpy.linspace(0,0.001,101))
 #print localClustHist
 centralityTuple = o.eigenvectorCentrality()
-centralityHist = vertex_hist(o.g, centralityTuple[1], numpy.linspace(0,0.6,101))
-print centralityHist
+centralityHist = vertex_hist(o.g, centralityTuple[1], numpy.linspace(0,0.5,101))
+#print centralityHist
 centrality = centralityTuple[1]
 #majorCentrality = centralityTuple[0]
+
+graph_draw(o.g, output_size=(1000, 1000), vertex_color=centrality, vertex_fill_color=centrality, vertex_size=1, edge_pen_width=1, output="centrality"+fileName[:-4]+".png")
+
 
 #print degreeHist
 #print frequencyDegreeHist
@@ -224,9 +227,9 @@ statsFile.write('Major influence = '+str(majorCentrality)+'\n')
 statsFile.close()
 """
 
-pyplot = matPlot(11)
-pyplot.plotHistogram(centralityHist, 'Frequencia de coeficiente', 'Coeficiente', 'Coef de centralidade')
-pyplot.writeHistogram(centralityHist, dirName+'/centralityHist.txt')
+#pyplot = matPlot(11)
+#pyplot.plotHistogram(localClustHist, 'Frequencia de coeficiente', 'Coeficiente', 'Coef de centralidade')
+#pyplot.writeHistogram(localClustHist, dirName+'/coefClustHist.txt')
 """
 #Plots ruins com grafos mal distribuidos
 pyplot.plotHistogram(degreeHist, 'n de Vertices', 'Grau', 'Grau de vertices')
