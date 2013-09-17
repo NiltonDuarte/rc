@@ -181,7 +181,7 @@ print(o.g)
 #localClustHist = vertex_hist(o.g, localClust, numpy.linspace(0,1,11))
 #print localClustHist
 centralityTuple = o.eigenvectorCentrality()
-centralityHist = vertex_hist(o.g, centralityTuple[1], numpy.linspace(0,0.6,10001))
+centralityHist = vertex_hist(o.g, centralityTuple[1], numpy.linspace(0,0.6,1001))
 print centralityHist
 centrality = centralityTuple[1]
 #majorCentrality = centralityTuple[0]
