@@ -21,8 +21,8 @@ class matPlot:
 	def writeHistogram(self, histogram, fileName):
 		"""Escreve em arquivo dados para plot"""
 		fileHist = open(fileName, 'w')
-		for element in histogram:
-			fileHist.write(str(element)+'\n')
+		for element in zip(histogram[0], histogram[1]):
+			fileHist.write(str(element[0])+'\t'+str(element[1])+'\n')
 		fileHist.close()
 
 
@@ -75,7 +75,7 @@ class rcGraph:
 		
 	def vertexHistogram(self, direction):
 		"""Retorna histograma de grau de vertices"""
-		return vertex_hist(self.g,direction)
+		return vertex_hist(self.g, direction)
 		
 	def distanceHistogram(self):
 		"""Retorna histograma de distancias entre vertices"""
@@ -172,15 +172,19 @@ o.g.list_properties()
 #o.drawSFDPGraph("graph-draw-sfdp.png")
 print(o.g)
 
-degreeHist = o.vertexHistogram("in")
-frequencyDegreeHist = o.degreeDistribution(degreeHist[0])
-distanceHist = o.distanceHistogram()
-diameterRelation = o.diameter()
-frequencyDistanceHist = o.distanceDistribution(distanceHist)
-localClust = o.localClustering()
+#degreeHist = o.vertexHistogram("in")
+#frequencyDegreeHist = o.degreeDistribution(degreeHist[0])
+#distanceHist = o.distanceHistogram()
+#diameterRelation = o.diameter()
+#frequencyDistanceHist = o.distanceDistribution(distanceHist)
+#localClust = o.localClustering()
+#localClustHist = vertex_hist(o.g, localClust, numpy.linspace(0,1,11))
+#print localClustHist
 centralityTuple = o.eigenvectorCentrality()
+centralityHist = vertex_hist(o.g, centralityTuple[1], numpy.linspace(0,0.6,10001))
+print centralityHist
 centrality = centralityTuple[1]
-majorCentrality = centralityTuple[0]
+#majorCentrality = centralityTuple[0]
 
 #print degreeHist
 #print frequencyDegreeHist
@@ -191,13 +195,13 @@ majorCentrality = centralityTuple[0]
 
 #print o.influenciaConjunta(20)
 
-vertexAverage = o.averageVertexProp("in")
-averageLocalClustering = o.averageVertexProp(localClust)
-globalClust = o.globalClustering(localClust.a)
-print 'Iniciando global clustering'
-globalClustCoef = o.globalGraphClustering()
-print 'Fim de global clustering'
-
+#vertexAverage = o.averageVertexProp("in")
+#averageLocalClustering = o.averageVertexProp(localClust)
+#globalClust = o.globalClustering(localClust.a)
+#print 'Iniciando global clustering'
+#globalClustCoef = o.globalGraphClustering()
+#print 'Fim de global clustering'
+"""
 statsFile = open(dirName+'/stats.txt', 'w')
 
 print 'Graph density = ', o.graphDensity()
@@ -218,9 +222,12 @@ print 'Major influence = ', majorCentrality
 statsFile.write('Major influence = '+str(majorCentrality)+'\n')
 
 statsFile.close()
+"""
 
-pyplot = matPlot(50)
-
+pyplot = matPlot(11)
+pyplot.plotHistogram(centralityHist, 'Frequencia de coeficiente', 'Coeficiente', 'Coef de centralidade')
+pyplot.writeHistogram(centralityHist, dirName+'/centralityHist.txt')
+"""
 #Plots ruins com grafos mal distribuidos
 pyplot.plotHistogram(degreeHist, 'n de Vertices', 'Grau', 'Grau de vertices')
 pyplot.writeHistogram(degreeHist[0], dirName+'/grauHist.txt')
@@ -232,7 +239,7 @@ pyplot.plotHistogram(localClust.a, 'Coeficiente de clusterizacao local', 'Vertic
 pyplot.writeHistogram(localClust.a, dirName+'/coefLocalClustHist.txt')
 pyplot.plotHistogram(centrality.a, 'Coeficiente de centralidade', 'Vertices', 'Centralidade baseada em eigenvector')
 pyplot.writeHistogram(centrality.a, dirName+'/coefCentralidadeHist.txt')
-
+"""
 
 """Bar plot
 fqHist.append(0)
