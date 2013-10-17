@@ -1,0 +1,12 @@
+all: build
+
+build:
+	python trabalho1.py
+
+clean:
+	rm -f *.pyc *.py~
+
+parser:
+	python parserGraphML.py
+
+remake: clean build
