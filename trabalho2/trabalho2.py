@@ -167,9 +167,8 @@ if not os.path.exists(dirName):
 
 o = rcGraph(fileName)
 o.g.list_properties()
-betweenessVertexMap,betweenessEdgeMap = o.betweenessCentrality()
-print o.g.vertex_properties['_graphml_vertex_id']
-
+centralityVertexMap,centralityEdgeMap = o.betweenessCentrality()
+print sorted(centralityVertexMap.a)
 #print o.g.vertex_properties[]
 #o.drawSFDPGraph("graph-draw-sfdp.png")
 #print(o.g)
