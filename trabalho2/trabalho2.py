@@ -1,4 +1,5 @@
 from graph_tool.all import *
+from operator import itemgetter
 import matplotlib.pyplot as plot
 import numpy
 import scipy.misc as spy
@@ -144,20 +145,34 @@ class rcGraph:
 			vertexCentrality = vertexDegree/(n-1)
 			centralityList.append(vertexCentrality)
 		centralityList.sort()
-		return centralityList;
+		return centralityList
 	
 	def betweenessCentrality(self):
-		return betweenness(self.g);
+		return betweenness(self.g)
 	
 	def closenessCentrality(self):
-		return closeness(self.g);
+		return closeness(self.g)
 		
 	def katzCentrality(self):
-		return katz(self.g);
+		return katz(self.g)
 		
 	def pageRankCentrality(self):																		
-		return pagerank(self.g);
+		return pagerank(self.g)
 		
+	def get10More(self, originalList):
+		returnList = []
+		sortedList = sorted(self.relateListElements(originalList), key=itemgetter(1))
+		for i in range(10):
+			centrality = sortedList.pop()
+			returnList.append(centrality)
+		return returnList
+	
+	def relateListElements(self, originalList):
+		returnList = []
+		for i in range(len(originalList)):
+			element = (i, originalList[i])
+			returnList.append(element)
+		return returnList
 		
 
 fileName = sys.argv[1]
@@ -168,7 +183,9 @@ if not os.path.exists(dirName):
 o = rcGraph(fileName)
 o.g.list_properties()
 centralityVertexMap,centralityEdgeMap = o.betweenessCentrality()
-print sorted(centralityVertexMap.a)
+print o.get10More(centralityVertexMap.a)
+
+
 #print o.g.vertex_properties[]
 #o.drawSFDPGraph("graph-draw-sfdp.png")
 #print(o.g)
