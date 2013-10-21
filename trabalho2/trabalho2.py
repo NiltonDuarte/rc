@@ -35,11 +35,16 @@ class rcGraph:
 		self.addIDVertex()
 
 	def addIDVertex(self):
-		self.g.vertex_properties['_graphml_vertex_id'] = self.g.new_vertex_property("string")
-		ID = 1
-		for v in self.g.vertices():
-			self.g.vertex_properties['_graphml_vertex_id'][v] = ID
-			ID += 1
+		if 'label' in self.g.vertex_properties:
+			self.g.vertex_properties['_graphml_vertex_id'] = self.g.vertex_properties['label']
+		elif 'id' in self.g.vertex_properties:
+			self.g.vertex_properties['_graphml_vertex_id'] = self.g.vertex_properties['id']
+		else:
+			self.g.vertex_properties['_graphml_vertex_id'] = self.g.new_vertex_property("string")
+			ID = 1
+			for v in self.g.vertices():
+				self.g.vertex_properties['_graphml_vertex_id'][v] = ID
+				ID += 1
 	
 	def drawGraph(self, fileName):
 		graph_draw(self.g,output_size=(1000, 1000), output=fileName)#, vertex_text=self.g.vertex_index, vertex_font_size=8)

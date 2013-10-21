@@ -1,23 +1,23 @@
-Vertex 37	| Centrality = 0.417808219178
-Vertex 41	| Centrality = 0.403973509934
-Vertex 38	| Centrality = 0.398692810458
-Vertex 21	| Centrality = 0.391025641026
-Vertex 15	| Centrality = 0.376543209877
-Vertex 2	| Centrality = 0.371951219512
-Vertex 34	| Centrality = 0.365269461078
-Vertex 29	| Centrality = 0.365269461078
-Vertex 8	| Centrality = 0.365269461078
-Vertex 9	| Centrality = 0.363095238095
+Vertex SN100	| Centrality = 0.417808219178
+Vertex SN9	| Centrality = 0.403973509934
+Vertex SN4	| Centrality = 0.398692810458
+Vertex Kringel	| Centrality = 0.391025641026
+Vertex Grin	| Centrality = 0.376543209877
+Vertex Beescratch	| Centrality = 0.371951219512
+Vertex Scabs	| Centrality = 0.365269461078
+Vertex Oscar	| Centrality = 0.365269461078
+Vertex DN63	| Centrality = 0.365269461078
+Vertex Double	| Centrality = 0.363095238095
 
 
 10 MENORES
-Vertex 61	| Centrality = 0.178362573099
-Vertex 57	| Centrality = 0.213286713287
-Vertex 33	| Centrality = 0.216312056738
-Vertex 49	| Centrality = 0.232824427481
-Vertex 32	| Centrality = 0.237354085603
-Vertex 23	| Centrality = 0.237354085603
-Vertex 6	| Centrality = 0.23828125
-Vertex 36	| Centrality = 0.244979919679
-Vertex 50	| Centrality = 0.246963562753
-Vertex 59	| Centrality = 0.248979591837
+Vertex Zig	| Centrality = 0.178362573099
+Vertex Wave	| Centrality = 0.213286713287
+Vertex Ripplefluke	| Centrality = 0.216312056738
+Vertex TR82	| Centrality = 0.232824427481
+Vertex Quasi	| Centrality = 0.237354085603
+Vertex MN23	| Centrality = 0.237354085603
+Vertex DN16	| Centrality = 0.23828125
+Vertex SMN5	| Centrality = 0.244979919679
+Vertex TR88	| Centrality = 0.246963562753
+Vertex Whitetip	| Centrality = 0.248979591837

@@ -1,23 +1,23 @@
+Vertex 302	| Centrality = 1.0
+Vertex 301	| Centrality = 1.0
+Vertex 300	| Centrality = 1.0
+Vertex 299	| Centrality = 1.0
+Vertex 298	| Centrality = 1.0
 Vertex 297	| Centrality = 1.0
 Vertex 296	| Centrality = 1.0
 Vertex 295	| Centrality = 1.0
 Vertex 294	| Centrality = 1.0
 Vertex 293	| Centrality = 1.0
-Vertex 292	| Centrality = 1.0
-Vertex 291	| Centrality = 1.0
-Vertex 290	| Centrality = 1.0
-Vertex 289	| Centrality = 1.0
-Vertex 288	| Centrality = 1.0
 
 
 10 MENORES
-Vertex 265	| Centrality = 0.0930150930151
-Vertex 276	| Centrality = 0.102158828065
-Vertex 267	| Centrality = 0.111720067454
-Vertex 266	| Centrality = 0.113685113685
-Vertex 193	| Centrality = 0.114768297964
-Vertex 282	| Centrality = 0.124590163934
-Vertex 277	| Centrality = 0.125295508274
-Vertex 273	| Centrality = 0.125651967757
-Vertex 268	| Centrality = 0.125950570342
-Vertex 189	| Centrality = 0.127098321343
+Vertex 263	| Centrality = 0.0930150930151
+Vertex 246	| Centrality = 0.102158828065
+Vertex 265	| Centrality = 0.111720067454
+Vertex 264	| Centrality = 0.113685113685
+Vertex 241	| Centrality = 0.114768297964
+Vertex 267	| Centrality = 0.124590163934
+Vertex 247	| Centrality = 0.125295508274
+Vertex 232	| Centrality = 0.125651967757
+Vertex 266	| Centrality = 0.125950570342
+Vertex 256	| Centrality = 0.127098321343

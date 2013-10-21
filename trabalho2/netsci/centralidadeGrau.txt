@@ -1,24 +1,24 @@
 10 MAIORES
-Vertex 1589	| Centrality = 0.0
-Vertex 1588	| Centrality = 0.0
-Vertex 1587	| Centrality = 0.0
-Vertex 1586	| Centrality = 0.0
-Vertex 1585	| Centrality = 0.0
-Vertex 1584	| Centrality = 0.0
-Vertex 1583	| Centrality = 0.0
-Vertex 1582	| Centrality = 0.0
-Vertex 1581	| Centrality = 0.0
-Vertex 1580	| Centrality = 0.0
+Vertex ZIMMERMANN, M	| Centrality = 0.0
+Vertex ZHU, J	| Centrality = 0.0
+Vertex HUANG, Z	| Centrality = 0.0
+Vertex ZHU, H	| Centrality = 0.0
+Vertex MONDRAGON, R	| Centrality = 0.0
+Vertex ZHOU, S	| Centrality = 0.0
+Vertex ZHOU, H	| Centrality = 0.0
+Vertex CHANGSHUI, Z	| Centrality = 0.0
+Vertex ZHONGBAO, K	| Centrality = 0.0
+Vertex ZHENG, Z	| Centrality = 0.0
 
 
 10 MENORES
-Vertex 1589	| Centrality = 0.0
-Vertex 1588	| Centrality = 0.0
-Vertex 1587	| Centrality = 0.0
-Vertex 1586	| Centrality = 0.0
-Vertex 1585	| Centrality = 0.0
-Vertex 1584	| Centrality = 0.0
-Vertex 1583	| Centrality = 0.0
-Vertex 1582	| Centrality = 0.0
-Vertex 1581	| Centrality = 0.0
-Vertex 1580	| Centrality = 0.0
+Vertex ZIMMERMANN, M	| Centrality = 0.0
+Vertex ZHU, J	| Centrality = 0.0
+Vertex HUANG, Z	| Centrality = 0.0
+Vertex ZHU, H	| Centrality = 0.0
+Vertex MONDRAGON, R	| Centrality = 0.0
+Vertex ZHOU, S	| Centrality = 0.0
+Vertex ZHOU, H	| Centrality = 0.0
+Vertex CHANGSHUI, Z	| Centrality = 0.0
+Vertex ZHONGBAO, K	| Centrality = 0.0
+Vertex ZHENG, Z	| Centrality = 0.0

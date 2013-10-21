@@ -1,24 +1,24 @@
 10 MAIORES
-Vertex 37	| Centrality = 0.248237196029
-Vertex 2	| Centrality = 0.213324435533
-Vertex 41	| Centrality = 0.143149518343
-Vertex 38	| Centrality = 0.138569788659
-Vertex 8	| Centrality = 0.118238619269
-Vertex 18	| Centrality = 0.114300162915
-Vertex 21	| Centrality = 0.102645739721
-Vertex 55	| Centrality = 0.0991216467635
-Vertex 52	| Centrality = 0.0846772547502
-Vertex 58	| Centrality = 0.084204683435
+Vertex SN100	| Centrality = 0.248237196029
+Vertex Beescratch	| Centrality = 0.213324435533
+Vertex SN9	| Centrality = 0.143149518343
+Vertex SN4	| Centrality = 0.138569788659
+Vertex DN63	| Centrality = 0.118238619269
+Vertex Jet	| Centrality = 0.114300162915
+Vertex Kringel	| Centrality = 0.102645739721
+Vertex Upbang	| Centrality = 0.0991216467635
+Vertex Trigger	| Centrality = 0.0846772547502
+Vertex Web	| Centrality = 0.084204683435
 
 
 10 MENORES
-Vertex 61	| Centrality = 0.0
-Vertex 59	| Centrality = 0.0
-Vertex 49	| Centrality = 0.0
-Vertex 36	| Centrality = 0.0
-Vertex 32	| Centrality = 0.0
-Vertex 23	| Centrality = 0.0
-Vertex 13	| Centrality = 0.0
-Vertex 12	| Centrality = 0.0
-Vertex 5	| Centrality = 0.0
-Vertex 57	| Centrality = 0.000136612021858
+Vertex Zig	| Centrality = 0.0
+Vertex Whitetip	| Centrality = 0.0
+Vertex TR82	| Centrality = 0.0
+Vertex SMN5	| Centrality = 0.0
+Vertex Quasi	| Centrality = 0.0
+Vertex MN23	| Centrality = 0.0
+Vertex Fork	| Centrality = 0.0
+Vertex Five	| Centrality = 0.0
+Vertex Cross	| Centrality = 0.0
+Vertex Wave	| Centrality = 0.000136612021858
