@@ -1,0 +1,24 @@
+10 MAIORES
+Vertex 1589	| Centrality = 0.0
+Vertex 1588	| Centrality = 0.0
+Vertex 1587	| Centrality = 0.0
+Vertex 1586	| Centrality = 0.0
+Vertex 1585	| Centrality = 0.0
+Vertex 1584	| Centrality = 0.0
+Vertex 1583	| Centrality = 0.0
+Vertex 1582	| Centrality = 0.0
+Vertex 1581	| Centrality = 0.0
+Vertex 1580	| Centrality = 0.0
+
+
+10 MENORES
+Vertex 1589	| Centrality = 0.0
+Vertex 1588	| Centrality = 0.0
+Vertex 1587	| Centrality = 0.0
+Vertex 1586	| Centrality = 0.0
+Vertex 1585	| Centrality = 0.0
+Vertex 1584	| Centrality = 0.0
+Vertex 1583	| Centrality = 0.0
+Vertex 1582	| Centrality = 0.0
+Vertex 1581	| Centrality = 0.0
+Vertex 1580	| Centrality = 0.0

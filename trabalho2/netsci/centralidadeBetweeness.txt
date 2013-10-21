@@ -1,0 +1,24 @@
+10 MAIORES
+Vertex 79	| Centrality = 0.0224593751135
+Vertex 151	| Centrality = 0.0195168613816
+Vertex 517	| Centrality = 0.0161734321121
+Vertex 282	| Centrality = 0.0152767561353
+Vertex 217	| Centrality = 0.0144435503199
+Vertex 35	| Centrality = 0.0141721405443
+Vertex 757	| Centrality = 0.0130992178876
+Vertex 302	| Centrality = 0.0125278058842
+Vertex 132	| Centrality = 0.00988873645098
+Vertex 204	| Centrality = 0.00987789056154
+
+
+10 MENORES
+Vertex 1589	| Centrality = 0.0
+Vertex 1588	| Centrality = 0.0
+Vertex 1587	| Centrality = 0.0
+Vertex 1585	| Centrality = 0.0
+Vertex 1584	| Centrality = 0.0
+Vertex 1583	| Centrality = 0.0
+Vertex 1582	| Centrality = 0.0
+Vertex 1581	| Centrality = 0.0
+Vertex 1580	| Centrality = 0.0
+Vertex 1579	| Centrality = 0.0

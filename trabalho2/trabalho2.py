@@ -29,9 +29,18 @@ class matPlot:
 
 class rcGraph:
 	
-	def __init__(self, fileName):
-		self.g = load_graph(fileName)
+	def __init__(self, graphName):
+		#self.g = load_graph(fileName)
+		self.g = collection.data[graphName]
+		self.addIDVertex()
 
+	def addIDVertex(self):
+		self.g.vertex_properties['_graphml_vertex_id'] = self.g.new_vertex_property("string")
+		ID = 1
+		for v in self.g.vertices():
+			self.g.vertex_properties['_graphml_vertex_id'][v] = ID
+			ID += 1
+	
 	def drawGraph(self, fileName):
 		graph_draw(self.g,output_size=(1000, 1000), output=fileName)#, vertex_text=self.g.vertex_index, vertex_font_size=8)
 		
@@ -140,7 +149,6 @@ class rcGraph:
 	def degreeCentrality(self):
 		n = self.g.num_vertices()
 		centralityList = []
-		print len(centralityList)
 		for v in self.g.vertices():
 			vertexDegree = v.in_degree()
 			vertexCentrality = float(vertexDegree)/(n-1)
@@ -170,10 +178,19 @@ class rcGraph:
 			returnList.append(element)
 		return returnList
 		
-	def get10More(self, originalList):
-		"""Retorna os 10 elementos maiores, relacionados com seus indices"""
+	def getGreatest(self, originalList):
+		"""Retorna os 10 elementos maiores, baseado no segundo elemento de cada tupla"""
 		returnList = []
 		sortedList = sorted(originalList, key=itemgetter(1))
+		for i in range(10):
+			centrality = sortedList.pop()
+			returnList.append(centrality)
+		return returnList
+		
+	def getLowest(self, originalList):
+		"""Retorna os 10 elementos menores, baseado no segundo elemento de cada tupla"""
+		returnList = []
+		sortedList = sorted(originalList, key=itemgetter(1), reverse=True)
 		for i in range(10):
 			centrality = sortedList.pop()
 			returnList.append(centrality)
@@ -188,46 +205,81 @@ if not os.path.exists(dirName):
 o = rcGraph(fileName)
 o.g.list_properties()
 centralityVertexList = o.degreeCentrality()
-result = o.get10More(centralityVertexList)
+resultMax = o.getGreatest(centralityVertexList)
+resultMin = o.getLowest(centralityVertexList)
 centralityFile = open(dirName+'/centralidadeGrau.txt', 'w')
-for i in range(len(result)):
-	centralityFile.write("Vertex "+str(result[i][0])+"\t| Centrality = "+str(result[i][1])+"\n")
+centralityFile.write("10 MAIORES\n")
+for i in range(len(resultMax)):
+	centralityFile.write("Vertex "+str(resultMax[i][0])+"\t| Centrality = "+str(resultMax[i][1])+"\n")
+centralityFile.write("\n\n10 MENORES\n")
+for i in range(len(resultMin)):
+	centralityFile.write("Vertex "+str(resultMin[i][0])+"\t| Centrality = "+str(resultMin[i][1])+"\n")
 centralityFile.close()
 
 centralityVertexMap,centralityEdgeMap = o.betweenessCentrality()
 o.g.vertex_properties['betweeness'] = centralityVertexMap
 centralitySet = o.relateListElements('betweeness')
-result = o.get10More(centralitySet)
+resultMax = o.getGreatest(centralitySet)
+resultMin = o.getLowest(centralitySet)
 centralityFile = open(dirName+'/centralidadeBetweeness.txt', 'w')
-for i in range(len(result)):
-	centralityFile.write("Vertex "+str(result[i][0])+"\t| Centrality = "+str(result[i][1])+"\n")
+centralityFile.write("10 MAIORES\n")
+for i in range(len(resultMax)):
+	centralityFile.write("Vertex "+str(resultMax[i][0])+"\t| Centrality = "+str(resultMax[i][1])+"\n")
+centralityFile.write("\n\n10 MENORES\n")
+for i in range(len(resultMin)):
+	centralityFile.write("Vertex "+str(resultMin[i][0])+"\t| Centrality = "+str(resultMin[i][1])+"\n")
 centralityFile.close()
 
 centralityVertexMap = o.closenessCentrality()
 o.g.vertex_properties['closeness'] = centralityVertexMap
 centralitySet = o.relateListElements('closeness')
-result = o.get10More(centralitySet)
+resultMax = o.getGreatest(centralitySet)
+resultMin = o.getLowest(centralitySet)
 centralityFile = open(dirName+'/centralidadeCloseness.txt', 'w')
-for i in range(len(result)):
-	centralityFile.write("Vertex "+str(result[i][0])+"\t| Centrality = "+str(result[i][1])+"\n")
+for i in range(len(resultMax)):
+	centralityFile.write("Vertex "+str(resultMax[i][0])+"\t| Centrality = "+str(resultMax[i][1])+"\n")
+centralityFile.write("\n\n10 MENORES\n")
+for i in range(len(resultMin)):
+	centralityFile.write("Vertex "+str(resultMin[i][0])+"\t| Centrality = "+str(resultMin[i][1])+"\n")
 centralityFile.close()
 
 centralityVertexMap = o.katzCentrality()
 o.g.vertex_properties['katz'] = centralityVertexMap
 centralitySet = o.relateListElements('katz')
-result = o.get10More(centralitySet)
+resultMax = o.getGreatest(centralitySet)
+resultMin = o.getLowest(centralitySet)
 centralityFile = open(dirName+'/centralidadeKatz.txt', 'w')
-for i in range(len(result)):
-	centralityFile.write("Vertex "+str(result[i][0])+"\t| Centrality = "+str(result[i][1])+"\n")
+for i in range(len(resultMax)):
+	centralityFile.write("Vertex "+str(resultMax[i][0])+"\t| Centrality = "+str(resultMax[i][1])+"\n")
+centralityFile.write("\n\n10 MENORES\n")
+for i in range(len(resultMin)):
+	centralityFile.write("Vertex "+str(resultMin[i][0])+"\t| Centrality = "+str(resultMin[i][1])+"\n")
 centralityFile.close()
 
 centralityVertexMap = o.pageRankCentrality()
 o.g.vertex_properties['pagerank'] = centralityVertexMap
 centralitySet = o.relateListElements('pagerank')
-result = o.get10More(centralitySet)
+resultMax = o.getGreatest(centralitySet)
+resultMin = o.getLowest(centralitySet)
 centralityFile = open(dirName+'/centralidadePageRank.txt', 'w')
-for i in range(len(result)):
-	centralityFile.write("Vertex "+str(result[i][0])+"\t| Centrality = "+str(result[i][1])+"\n")
+for i in range(len(resultMax)):
+	centralityFile.write("Vertex "+str(resultMax[i][0])+"\t| Centrality = "+str(resultMax[i][1])+"\n")
+centralityFile.write("\n\n10 MENORES\n")
+for i in range(len(resultMin)):
+	centralityFile.write("Vertex "+str(resultMin[i][0])+"\t| Centrality = "+str(resultMin[i][1])+"\n")
+centralityFile.close()
+
+maxCentrality, centralityVertexMap = o.eigenvectorCentrality()
+o.g.vertex_properties['eigenvector'] = centralityVertexMap
+centralitySet = o.relateListElements('eigenvector')
+resultMax = o.getGreatest(centralitySet)
+resultMin = o.getLowest(centralitySet)
+centralityFile = open(dirName+'/centralidadeEigenvector.txt', 'w')
+for i in range(len(resultMax)):
+	centralityFile.write("Vertex "+str(resultMax[i][0])+"\t| Centrality = "+str(resultMax[i][1])+"\n")
+centralityFile.write("\n\n10 MENORES\n")
+for i in range(len(resultMin)):
+	centralityFile.write("Vertex "+str(resultMin[i][0])+"\t| Centrality = "+str(resultMin[i][1])+"\n")
 centralityFile.close()
 
 

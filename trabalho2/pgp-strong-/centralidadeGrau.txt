@@ -1,0 +1,24 @@
+10 MAIORES
+Vertex 127	| Centrality = 0.0242492775474
+Vertex 8	| Centrality = 0.0166101269004
+Vertex 16	| Centrality = 0.0150018846589
+Vertex 210	| Centrality = 0.0102022867194
+Vertex 365	| Centrality = 0.009724839804
+Vertex 1308	| Centrality = 0.00967458223395
+Vertex 217	| Centrality = 0.00927252167358
+Vertex 35983	| Centrality = 0.00884533232818
+Vertex 2191	| Centrality = 0.00874481718809
+Vertex 227	| Centrality = 0.008644302048
+
+
+10 MENORES
+Vertex 39796	| Centrality = 2.51287850232e-05
+Vertex 39795	| Centrality = 2.51287850232e-05
+Vertex 39793	| Centrality = 2.51287850232e-05
+Vertex 39790	| Centrality = 2.51287850232e-05
+Vertex 39787	| Centrality = 2.51287850232e-05
+Vertex 39786	| Centrality = 2.51287850232e-05
+Vertex 39784	| Centrality = 2.51287850232e-05
+Vertex 39781	| Centrality = 2.51287850232e-05
+Vertex 39779	| Centrality = 2.51287850232e-05
+Vertex 39777	| Centrality = 2.51287850232e-05

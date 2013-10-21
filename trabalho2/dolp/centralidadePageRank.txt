@@ -1,0 +1,23 @@
+Vertex 15	| Centrality = 0.0321443610957
+Vertex 18	| Centrality = 0.0317283684801
+Vertex 52	| Centrality = 0.0312992392116
+Vertex 58	| Centrality = 0.0300956026824
+Vertex 38	| Centrality = 0.0298752251962
+Vertex 46	| Centrality = 0.0295140829026
+Vertex 34	| Centrality = 0.0284229567182
+Vertex 30	| Centrality = 0.0264584443319
+Vertex 14	| Centrality = 0.026157096374
+Vertex 2	| Centrality = 0.0246508417558
+
+
+10 MENORES
+Vertex 13	| Centrality = 0.00483530400041
+Vertex 36	| Centrality = 0.00491820566611
+Vertex 59	| Centrality = 0.00496288777414
+Vertex 12	| Centrality = 0.00507978792208
+Vertex 5	| Centrality = 0.00507978792208
+Vertex 49	| Centrality = 0.00526172222711
+Vertex 32	| Centrality = 0.00541592781772
+Vertex 23	| Centrality = 0.00541592781772
+Vertex 61	| Centrality = 0.00619017828734
+Vertex 56	| Centrality = 0.0074941511738
