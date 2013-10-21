@@ -1,0 +1,10 @@
+Vertex 4037	| Centrality = 0.0642395276919
+Vertex 15	| Centrality = 0.0507450098398
+Vertex 2398	| Centrality = 0.0477930840596
+Vertex 2625	| Centrality = 0.046527973011
+Vertex 1297	| Centrality = 0.0434354793365
+Vertex 2565	| Centrality = 0.0385156030363
+Vertex 762	| Centrality = 0.0382344672477
+Vertex 2328	| Centrality = 0.0373910598819
+Vertex 5254	| Centrality = 0.0372504919876
+Vertex 3352	| Centrality = 0.0371099240933

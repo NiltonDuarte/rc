@@ -138,13 +138,14 @@ class rcGraph:
 	#def eigenvectorCentrality(self):
 	
 	def degreeCentrality(self):
-		centralityList =[]
 		n = self.g.num_vertices()
+		centralityList = []
+		print len(centralityList)
 		for v in self.g.vertices():
 			vertexDegree = v.in_degree()
-			vertexCentrality = vertexDegree/(n-1)
-			centralityList.append(vertexCentrality)
-		centralityList.sort()
+			vertexCentrality = float(vertexDegree)/(n-1)
+			vertexID = self.g.vertex_properties['_graphml_vertex_id'][v]
+			centralityList.append((vertexID, vertexCentrality))
 		return centralityList
 	
 	def betweenessCentrality(self):
@@ -159,19 +160,23 @@ class rcGraph:
 	def pageRankCentrality(self):																		
 		return pagerank(self.g)
 		
-	def get10More(self, originalList):
+	def relateListElements(self, propertyName):
+		"""Retorna lista com id do Vertice e propriedade relacionados em uma tupla"""
 		returnList = []
-		sortedList = sorted(self.relateListElements(originalList), key=itemgetter(1))
+		for v in self.g.vertices():
+			prop = self.g.vertex_properties[propertyName][v]
+			vertexID = self.g.vertex_properties['_graphml_vertex_id'][v]
+			element = (vertexID, prop)
+			returnList.append(element)
+		return returnList
+		
+	def get10More(self, originalList):
+		"""Retorna os 10 elementos maiores, relacionados com seus indices"""
+		returnList = []
+		sortedList = sorted(originalList, key=itemgetter(1))
 		for i in range(10):
 			centrality = sortedList.pop()
 			returnList.append(centrality)
-		return returnList
-	
-	def relateListElements(self, originalList):
-		returnList = []
-		for i in range(len(originalList)):
-			element = (i, originalList[i])
-			returnList.append(element)
 		return returnList
 		
 
@@ -182,8 +187,48 @@ if not os.path.exists(dirName):
 
 o = rcGraph(fileName)
 o.g.list_properties()
+centralityVertexList = o.degreeCentrality()
+result = o.get10More(centralityVertexList)
+centralityFile = open(dirName+'/centralidadeGrau.txt', 'w')
+for i in range(len(result)):
+	centralityFile.write("Vertex "+str(result[i][0])+"\t| Centrality = "+str(result[i][1])+"\n")
+centralityFile.close()
+
 centralityVertexMap,centralityEdgeMap = o.betweenessCentrality()
-print o.get10More(centralityVertexMap.a)
+o.g.vertex_properties['betweeness'] = centralityVertexMap
+centralitySet = o.relateListElements('betweeness')
+result = o.get10More(centralitySet)
+centralityFile = open(dirName+'/centralidadeBetweeness.txt', 'w')
+for i in range(len(result)):
+	centralityFile.write("Vertex "+str(result[i][0])+"\t| Centrality = "+str(result[i][1])+"\n")
+centralityFile.close()
+
+centralityVertexMap = o.closenessCentrality()
+o.g.vertex_properties['closeness'] = centralityVertexMap
+centralitySet = o.relateListElements('closeness')
+result = o.get10More(centralitySet)
+centralityFile = open(dirName+'/centralidadeCloseness.txt', 'w')
+for i in range(len(result)):
+	centralityFile.write("Vertex "+str(result[i][0])+"\t| Centrality = "+str(result[i][1])+"\n")
+centralityFile.close()
+
+centralityVertexMap = o.katzCentrality()
+o.g.vertex_properties['katz'] = centralityVertexMap
+centralitySet = o.relateListElements('katz')
+result = o.get10More(centralitySet)
+centralityFile = open(dirName+'/centralidadeKatz.txt', 'w')
+for i in range(len(result)):
+	centralityFile.write("Vertex "+str(result[i][0])+"\t| Centrality = "+str(result[i][1])+"\n")
+centralityFile.close()
+
+centralityVertexMap = o.pageRankCentrality()
+o.g.vertex_properties['pagerank'] = centralityVertexMap
+centralitySet = o.relateListElements('pagerank')
+result = o.get10More(centralitySet)
+centralityFile = open(dirName+'/centralidadePageRank.txt', 'w')
+for i in range(len(result)):
+	centralityFile.write("Vertex "+str(result[i][0])+"\t| Centrality = "+str(result[i][1])+"\n")
+centralityFile.close()
 
 
 #print o.g.vertex_properties[]
