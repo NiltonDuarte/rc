@@ -3,6 +3,7 @@ from operator import itemgetter
 import matplotlib.pyplot as plot
 import numpy
 import scipy.misc as spy
+import scipy.stats as stSpy
 import sys
 import os
 
@@ -35,16 +36,16 @@ class rcGraph:
 		self.addIDVertex()
 
 	def addIDVertex(self):
-		if 'label' in self.g.vertex_properties:
-			self.g.vertex_properties['_graphml_vertex_id'] = self.g.vertex_properties['label']
-		elif 'id' in self.g.vertex_properties:
-			self.g.vertex_properties['_graphml_vertex_id'] = self.g.vertex_properties['id']
-		else:
-			self.g.vertex_properties['_graphml_vertex_id'] = self.g.new_vertex_property("string")
-			ID = 1
-			for v in self.g.vertices():
-				self.g.vertex_properties['_graphml_vertex_id'][v] = ID
-				ID += 1
+		#if 'label' in self.g.vertex_properties:
+		#	self.g.vertex_properties['_graphml_vertex_id'] = self.g.vertex_properties['label']
+		#elif 'id' in self.g.vertex_properties:
+		#	self.g.vertex_properties['_graphml_vertex_id'] = self.g.vertex_properties['id']
+		#else:
+		self.g.vertex_properties['_graphml_vertex_id'] = self.g.new_vertex_property("string")
+		ID = 1
+		for v in self.g.vertices():
+			self.g.vertex_properties['_graphml_vertex_id'][v] = ID
+			ID += 1
 	
 	def drawGraph(self, fileName):
 		graph_draw(self.g,output_size=(1000, 1000), output=fileName)#, vertex_text=self.g.vertex_index, vertex_font_size=8)
@@ -154,10 +155,15 @@ class rcGraph:
 	def degreeCentrality(self):
 		n = self.g.num_vertices()
 		centralityList = []
+		
+		centralityProp = self.g.new_vertex_property("float")
+		self.g.vertex_properties['degreeCentrality'] = centralityProp
+		
 		for v in self.g.vertices():
-			vertexDegree = v.in_degree()
+			vertexDegree = v.out_degree()
 			vertexCentrality = float(vertexDegree)/(n-1)
 			vertexID = self.g.vertex_properties['_graphml_vertex_id'][v]
+			self.g.vertex_properties['degreeCentrality'][v] = vertexCentrality
 			centralityList.append((vertexID, vertexCentrality))
 		return centralityList
 	
@@ -201,6 +207,18 @@ class rcGraph:
 			returnList.append(centrality)
 		return returnList
 		
+	def pearsonCorrelation(self, centralityName):
+		edgeA = []
+		edgeB = []
+		
+		for e in self.g.edges():
+			sourceCentrality = self.g.vertex_properties[centralityName][e.source()]
+			targetCentrality = self.g.vertex_properties[centralityName][e.target()]
+			edgeA.append(sourceCentrality)
+			edgeB.append(targetCentrality)
+		
+		return stSpy.pearsonr(edgeA, edgeB)
+		
 
 fileName = sys.argv[1]
 dirName = './'+sys.argv[1][:-4]
@@ -209,6 +227,7 @@ if not os.path.exists(dirName):
 
 o = rcGraph(fileName)
 o.g.list_properties()
+
 centralityVertexList = o.degreeCentrality()
 resultMax = o.getGreatest(centralityVertexList)
 resultMin = o.getLowest(centralityVertexList)
@@ -219,7 +238,11 @@ for i in range(len(resultMax)):
 centralityFile.write("\n\n10 MENORES\n")
 for i in range(len(resultMin)):
 	centralityFile.write("Vertex "+str(resultMin[i][0])+"\t| Centrality = "+str(resultMin[i][1])+"\n")
+centralityFile.write("\n\nPEARSON CORRELATION\n")
+coef = o.pearsonCorrelation('degreeCentrality')
+centralityFile.write("Pearson Correlation Coefficient = "+str(coef))
 centralityFile.close()
+
 
 centralityVertexMap,centralityEdgeMap = o.betweenessCentrality()
 o.g.vertex_properties['betweeness'] = centralityVertexMap
@@ -233,7 +256,11 @@ for i in range(len(resultMax)):
 centralityFile.write("\n\n10 MENORES\n")
 for i in range(len(resultMin)):
 	centralityFile.write("Vertex "+str(resultMin[i][0])+"\t| Centrality = "+str(resultMin[i][1])+"\n")
+centralityFile.write("\n\nPEARSON CORRELATION\n")
+coef = o.pearsonCorrelation('betweeness')
+centralityFile.write("Pearson Correlation Coefficient = "+str(coef))
 centralityFile.close()
+
 
 centralityVertexMap = o.closenessCentrality()
 o.g.vertex_properties['closeness'] = centralityVertexMap
@@ -246,6 +273,9 @@ for i in range(len(resultMax)):
 centralityFile.write("\n\n10 MENORES\n")
 for i in range(len(resultMin)):
 	centralityFile.write("Vertex "+str(resultMin[i][0])+"\t| Centrality = "+str(resultMin[i][1])+"\n")
+centralityFile.write("\n\nPEARSON CORRELATION\n")
+coef = o.pearsonCorrelation('closeness')
+centralityFile.write("Pearson Correlation Coefficient = "+str(coef))
 centralityFile.close()
 
 centralityVertexMap = o.katzCentrality()
@@ -259,6 +289,9 @@ for i in range(len(resultMax)):
 centralityFile.write("\n\n10 MENORES\n")
 for i in range(len(resultMin)):
 	centralityFile.write("Vertex "+str(resultMin[i][0])+"\t| Centrality = "+str(resultMin[i][1])+"\n")
+centralityFile.write("\n\nPEARSON CORRELATION\n")
+coef = o.pearsonCorrelation('katz')
+centralityFile.write("Pearson Correlation Coefficient = "+str(coef))
 centralityFile.close()
 
 centralityVertexMap = o.pageRankCentrality()
@@ -272,6 +305,9 @@ for i in range(len(resultMax)):
 centralityFile.write("\n\n10 MENORES\n")
 for i in range(len(resultMin)):
 	centralityFile.write("Vertex "+str(resultMin[i][0])+"\t| Centrality = "+str(resultMin[i][1])+"\n")
+centralityFile.write("\n\nPEARSON CORRELATION\n")
+coef = o.pearsonCorrelation('pagerank')
+centralityFile.write("Pearson Correlation Coefficient = "+str(coef))
 centralityFile.close()
 
 maxCentrality, centralityVertexMap = o.eigenvectorCentrality()
@@ -285,6 +321,9 @@ for i in range(len(resultMax)):
 centralityFile.write("\n\n10 MENORES\n")
 for i in range(len(resultMin)):
 	centralityFile.write("Vertex "+str(resultMin[i][0])+"\t| Centrality = "+str(resultMin[i][1])+"\n")
+centralityFile.write("\n\nPEARSON CORRELATION\n")
+coef = o.pearsonCorrelation('eigenvector')
+centralityFile.write("Pearson Correlation Coefficient = "+str(coef))
 centralityFile.close()
 
 

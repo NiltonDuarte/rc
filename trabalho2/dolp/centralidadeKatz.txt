@@ -1,23 +1,27 @@
-Vertex Grin	| Centrality = 0.315773752458
-Vertex SN4	| Centrality = 0.30055627163
-Vertex Topless	| Centrality = 0.284994399099
-Vertex Scabs	| Centrality = 0.281090098392
-Vertex TR99	| Centrality = 0.217685238433
-Vertex Patchback	| Centrality = 0.211752914672
-Vertex Trigger	| Centrality = 0.210671948686
-Vertex Hook	| Centrality = 0.207988664585
-Vertex SN9	| Centrality = 0.207875580386
-Vertex MN105	| Centrality = 0.20734225787
+Vertex 15	| Centrality = 0.315773752458
+Vertex 38	| Centrality = 0.30055627163
+Vertex 46	| Centrality = 0.284994399099
+Vertex 34	| Centrality = 0.281090098392
+Vertex 51	| Centrality = 0.217685238433
+Vertex 30	| Centrality = 0.211752914672
+Vertex 52	| Centrality = 0.210671948686
+Vertex 17	| Centrality = 0.207988664585
+Vertex 41	| Centrality = 0.207875580386
+Vertex 22	| Centrality = 0.20734225787
 
 
 10 MENORES
-Vertex Zig	| Centrality = 0.000543275657456
-Vertex TR82	| Centrality = 0.00243778780949
-Vertex Quasi	| Centrality = 0.00245387403155
-Vertex MN23	| Centrality = 0.00245387403155
-Vertex Wave	| Centrality = 0.00263606522539
-Vertex Ripplefluke	| Centrality = 0.00389899510347
-Vertex Mus	| Centrality = 0.00597818577319
-Vertex DN16	| Centrality = 0.00662836159893
-Vertex Notch	| Centrality = 0.00897075527203
-Vertex DN21	| Centrality = 0.0122973643504
+Vertex 61	| Centrality = 0.000543275657456
+Vertex 49	| Centrality = 0.00243778780949
+Vertex 32	| Centrality = 0.00245387403155
+Vertex 23	| Centrality = 0.00245387403155
+Vertex 57	| Centrality = 0.00263606522539
+Vertex 33	| Centrality = 0.00389899510347
+Vertex 26	| Centrality = 0.00597818577319
+Vertex 6	| Centrality = 0.00662836159893
+Vertex 27	| Centrality = 0.00897075527203
+Vertex 7	| Centrality = 0.0122973643504
+
+
+PEARSON CORRELATION
+Pearson Correlation Coefficient = (0.64237096601550248, 7.0904423608591897e-20)

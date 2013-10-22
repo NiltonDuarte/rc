@@ -1,23 +1,27 @@
-Vertex 305	| Centrality = 0.587572165576
-Vertex 71	| Centrality = 0.163479519919
-Vertex 72	| Centrality = 0.150170165272
-Vertex 276	| Centrality = 0.147897693887
-Vertex 146	| Centrality = 0.147686240043
-Vertex 73	| Centrality = 0.144455292107
-Vertex 74	| Centrality = 0.131034110212
-Vertex 76	| Centrality = 0.128412600305
-Vertex 234	| Centrality = 0.12649223564
-Vertex 75	| Centrality = 0.123765601756
+Vertex 45	| Centrality = 0.587572165576
+Vertex 13	| Centrality = 0.163479519919
+Vertex 3	| Centrality = 0.150170165272
+Vertex 190	| Centrality = 0.147897693887
+Vertex 152	| Centrality = 0.147686240043
+Vertex 85	| Centrality = 0.144455292107
+Vertex 87	| Centrality = 0.131034110212
+Vertex 119	| Centrality = 0.128412600305
+Vertex 161	| Centrality = 0.12649223564
+Vertex 118	| Centrality = 0.123765601756
 
 
 10 MENORES
-Vertex 302	| Centrality = 0.0
-Vertex 301	| Centrality = 0.0
-Vertex 300	| Centrality = 0.0
-Vertex 299	| Centrality = 0.0
-Vertex 298	| Centrality = 0.0
 Vertex 297	| Centrality = 0.0
 Vertex 296	| Centrality = 0.0
 Vertex 295	| Centrality = 0.0
 Vertex 294	| Centrality = 0.0
 Vertex 293	| Centrality = 0.0
+Vertex 292	| Centrality = 0.0
+Vertex 291	| Centrality = 0.0
+Vertex 290	| Centrality = 0.0
+Vertex 289	| Centrality = 0.0
+Vertex 288	| Centrality = 0.0
+
+
+PEARSON CORRELATION
+Pearson Correlation Coefficient = (0.13635640305544389, 2.9241615089472058e-11)

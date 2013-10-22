@@ -1,23 +1,27 @@
-Vertex MANSFIELD, T	| Centrality = 0.224971129565
-Vertex CAGNEY, G	| Centrality = 0.224971129565
-Vertex UETZ, P	| Centrality = 0.224971129565
-Vertex ROTHBERG, J	| Centrality = 0.223199374624
-Vertex FIELDS, S	| Centrality = 0.223199374624
-Vertex JOHNSTON, M	| Centrality = 0.223199374624
-Vertex YANG, M	| Centrality = 0.223199374624
-Vertex VIJAYADAMODAR, G	| Centrality = 0.223199374624
-Vertex KALBFLEISCH, T	| Centrality = 0.223199374624
-Vertex CONOVER, D	| Centrality = 0.223199374624
+Vertex 1432	| Centrality = 0.224971129565
+Vertex 1431	| Centrality = 0.224971129565
+Vertex 1430	| Centrality = 0.224971129565
+Vertex 1448	| Centrality = 0.223199374624
+Vertex 1447	| Centrality = 0.223199374624
+Vertex 1446	| Centrality = 0.223199374624
+Vertex 1445	| Centrality = 0.223199374624
+Vertex 1444	| Centrality = 0.223199374624
+Vertex 1443	| Centrality = 0.223199374624
+Vertex 1442	| Centrality = 0.223199374624
 
 
 10 MENORES
-Vertex ZHOU, H	| Centrality = 6.96459283517e-12
-Vertex ZACHARY, W	| Centrality = 6.96459283517e-12
-Vertex YOUNG, H	| Centrality = 6.96459283517e-12
-Vertex WORMALD, N	| Centrality = 6.96459283517e-12
-Vertex WOOLF, M	| Centrality = 6.96459283517e-12
-Vertex WOLFRAM, S	| Centrality = 6.96459283517e-12
-Vertex WINFREE, A	| Centrality = 6.96459283517e-12
-Vertex WEST, D	| Centrality = 6.96459283517e-12
-Vertex WAXMAN, B	| Centrality = 6.96459283517e-12
-Vertex WALSH, T	| Centrality = 6.96459283517e-12
+Vertex 1583	| Centrality = 6.96459283517e-12
+Vertex 1560	| Centrality = 6.96459283517e-12
+Vertex 1553	| Centrality = 6.96459283517e-12
+Vertex 1529	| Centrality = 6.96459283517e-12
+Vertex 1528	| Centrality = 6.96459283517e-12
+Vertex 1525	| Centrality = 6.96459283517e-12
+Vertex 1522	| Centrality = 6.96459283517e-12
+Vertex 1511	| Centrality = 6.96459283517e-12
+Vertex 1500	| Centrality = 6.96459283517e-12
+Vertex 1491	| Centrality = 6.96459283517e-12
+
+
+PEARSON CORRELATION
+Pearson Correlation Coefficient = (0.99398711702229747, 0.0)

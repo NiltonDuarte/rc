@@ -1,23 +1,27 @@
-Vertex NEWMAN, M	| Centrality = 0.00384627183516
-Vertex BARABASI, A	| Centrality = 0.00346753802322
-Vertex JEONG, H	| Centrality = 0.00257427692798
-Vertex SOLE, R	| Centrality = 0.00219512511662
-Vertex YOUNG, M	| Centrality = 0.00218151784898
-Vertex BOCCALETTI, S	| Centrality = 0.00212169859104
-Vertex OLTVAI, Z	| Centrality = 0.00199307742085
-Vertex DIAZGUILERA, A	| Centrality = 0.0018342508732
-Vertex PASTORSATORRAS, R	| Centrality = 0.00182375717988
-Vertex STAUFFER, D	| Centrality = 0.00180456166339
+Vertex 79	| Centrality = 0.00384627183516
+Vertex 34	| Centrality = 0.00346753802322
+Vertex 35	| Centrality = 0.00257427692798
+Vertex 282	| Centrality = 0.00219512511662
+Vertex 295	| Centrality = 0.00218151784898
+Vertex 217	| Centrality = 0.00212169859104
+Vertex 55	| Centrality = 0.00199307742085
+Vertex 97	| Centrality = 0.0018342508732
+Vertex 151	| Centrality = 0.00182375717988
+Vertex 47	| Centrality = 0.00180456166339
 
 
 10 MENORES
-Vertex ZHOU, H	| Centrality = 9.43989930774e-05
-Vertex ZACHARY, W	| Centrality = 9.43989930774e-05
-Vertex YOUNG, H	| Centrality = 9.43989930774e-05
-Vertex WORMALD, N	| Centrality = 9.43989930774e-05
-Vertex WOOLF, M	| Centrality = 9.43989930774e-05
-Vertex WOLFRAM, S	| Centrality = 9.43989930774e-05
-Vertex WINFREE, A	| Centrality = 9.43989930774e-05
-Vertex WEST, D	| Centrality = 9.43989930774e-05
-Vertex WAXMAN, B	| Centrality = 9.43989930774e-05
-Vertex WALSH, T	| Centrality = 9.43989930774e-05
+Vertex 1583	| Centrality = 9.43989930774e-05
+Vertex 1560	| Centrality = 9.43989930774e-05
+Vertex 1553	| Centrality = 9.43989930774e-05
+Vertex 1529	| Centrality = 9.43989930774e-05
+Vertex 1528	| Centrality = 9.43989930774e-05
+Vertex 1525	| Centrality = 9.43989930774e-05
+Vertex 1522	| Centrality = 9.43989930774e-05
+Vertex 1511	| Centrality = 9.43989930774e-05
+Vertex 1500	| Centrality = 9.43989930774e-05
+Vertex 1491	| Centrality = 9.43989930774e-05
+
+
+PEARSON CORRELATION
+Pearson Correlation Coefficient = (0.014546121460472371, 0.44642554787021171)
