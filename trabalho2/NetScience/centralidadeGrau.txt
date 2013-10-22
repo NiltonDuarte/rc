@@ -1,0 +1,28 @@
+10 MAIORES
+Vertex 34	| Centrality = 0.0214105793451
+Vertex 79	| Centrality = 0.0170025188917
+Vertex 35	| Centrality = 0.0170025188917
+Vertex 55	| Centrality = 0.0132241813602
+Vertex 1432	| Centrality = 0.0125944584383
+Vertex 1431	| Centrality = 0.0125944584383
+Vertex 1430	| Centrality = 0.0125944584383
+Vertex 295	| Centrality = 0.0125944584383
+Vertex 1448	| Centrality = 0.0119647355164
+Vertex 1447	| Centrality = 0.0119647355164
+
+
+10 MENORES
+Vertex 1583	| Centrality = 0.0
+Vertex 1560	| Centrality = 0.0
+Vertex 1553	| Centrality = 0.0
+Vertex 1529	| Centrality = 0.0
+Vertex 1528	| Centrality = 0.0
+Vertex 1525	| Centrality = 0.0
+Vertex 1522	| Centrality = 0.0
+Vertex 1511	| Centrality = 0.0
+Vertex 1500	| Centrality = 0.0
+Vertex 1491	| Centrality = 0.0
+
+
+PEARSON CORRELATION
+Pearson Correlation Coefficient = (0.54296245758201056, 4.2539190914357977e-210)

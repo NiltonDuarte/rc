@@ -1,6 +1,7 @@
 .::Grafos utilizados::.
 GRAFO			(V,E)
-Dolphins		()
-CElegans Neural		()
-NetScience		()
-PgP-Strong-2009		()
+Dolphins		(62,159)
+CElegans Neural		(297,2359)
+NetScience		(1589,2742)
+Power			(4941,6594)
+Cond-Matter		(16726,47594)
