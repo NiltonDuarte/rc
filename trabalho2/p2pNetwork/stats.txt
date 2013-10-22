@@ -1,8 +1,0 @@
-Graph density = 7.55139565012e-05
-Degree average = 2.36302048381 +- 0.0107127572162
-Average distance = 4.15347183234
-Diameter = 25.0 | Source = 0 | Target = 62536
-Average local clustering = 0.000180986892888 +- 2.68906050366e-05
-Global Graph clustering = 0.00387201930398 +- 6.67571344384e-05
-Global clustering = 0.000180986892888
-Major influence = 0.273277636977
