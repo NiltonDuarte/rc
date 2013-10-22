@@ -171,7 +171,7 @@ class rcGraph:
 		return betweenness(self.g)
 	
 	def closenessCentrality(self):
-		return closeness(self.g)
+		return closeness(self.g, norm=True)
 		
 	def katzCentrality(self):
 		return katz(self.g)
