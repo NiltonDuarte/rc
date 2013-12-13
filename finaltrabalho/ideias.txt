@@ -1,0 +1,23 @@
+Como o grau evolui ao longo do tempo?
+Quão forte é o puxão de acordo com o grau do vértice?
+
+---
+O que eu quero? Passar na matéria! Estudar o grau do vértice em rede de colaboração
+Que rede é essa? Coautoria de artigos em computação
+De onde vamos obter esta rede? Banco de dados do dblp
+Como vamos construir a rede?
+Que análises vamos fazer?
+
+
+Como varia a chance de 2 vértices terem uma aresta dada a distância entre eles?
+Distribuição de grau
+Como variam outras medidas como coeficiente de clusterização
+Janela temporal para que exista GCC: tem utilidade?
+Arestas tem intensidade?
+
+----
+Sobre o grafo que vamos usar:
+- Tirar de sites como o Konect!
+- Seria bom entender que diabos é o timestamp(inicio e incremento!)
+- temos que cortar o arquivo! olhar o maior e o menor time stamp e escolher um intervalo.
+qual o melhor intervalo? dada uma data de início, parar quando tiver um milhão de arestas!
