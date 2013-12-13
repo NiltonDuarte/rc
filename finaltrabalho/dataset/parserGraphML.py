@@ -28,7 +28,7 @@ datakeyET.set('attr.name', 'time')
 datakeyET.set('attr.type', 'int')
 graphET = ET.SubElement(graphmlET,'graph')
 graphET.set('id', 'G')
-graphET.set('edgedefault','directed')
+graphET.set('edgedefault','undirected')
 try:
 	nodeList = [];
 	nodesAdded = 0;
