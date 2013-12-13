@@ -1,0 +1,5 @@
+Mark a given subgraph sub on the graph g.
+http://graph-tool.skewed.de/static/doc/topology.html#graph_tool.topology.mark_subgraph
+
+Acessar propriedade
+http://stackoverflow.com/questions/9526827/graph-tool-how-to-access-properties
