@@ -2,7 +2,7 @@ from finaltrabalho import *
 
 
 
-fileName = "/home/nilton/workspace/rc/currSet.xml"
+fileName = "/home/lygiamarina/rc/currSet.xml"
 #dirName = './'+sys.argv[1][:-4]
 #if not os.path.exists(dirName):
 #	os.makedirs(dirName)
@@ -14,8 +14,8 @@ print(graph.g)
 
 initVertex = [56369, 64322]
 probability = 1
-totalSteps = 27
-stepsEachTime = 25
+totalSteps = 25
+stepsEachTime = 3
 
 print '@Params InitialVertex = '+str(initVertex) + ' InfectionProbability = ' + str(probability) + ' TotalSteps = ' + str(totalSteps) + ' StepsEachTime = ' + str(stepsEachTime) + '\n'
 
