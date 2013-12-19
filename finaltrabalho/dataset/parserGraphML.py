@@ -11,8 +11,8 @@ import sys
 </graphml>
 """
 
-outFileName = sys.argv[2]
-inFileName = sys.argv[1]
+outFileName = "dblb1009843261.xml" #sys.argv[2]
+inFileName = "out.dblp_coauthor" #sys.argv[1]
 
 inFile = open(inFileName)
 print inFile
@@ -39,23 +39,24 @@ try:
 		else:
 			line = line.strip()
 			lineInfos = line.split(' ')
-			if lineInfos[0] not in nodeList:
-				nodeET = ET.SubElement(graphET,'node')
-				nodeET.set('id',lineInfos[0])
-				nodeList.append(lineInfos[0])
-				nodesAdded += 1
-			if lineInfos[1] not in nodeList:
-				nodeET = ET.SubElement(graphET,'node')
-				nodeET.set('id',lineInfos[1])
-				nodeList.append(lineInfos[1])
-				nodesAdded +=1
-			edgeET = ET.SubElement(graphET,'edge')
-			edgeET.set('source',lineInfos[0])
-			edgeET.set('target',lineInfos[1])
-			dataET = ET.SubElement(edgeET, 'data')
-			dataET.set('key','d0')
-			dataET.text = str(lineInfos[4])
-			edgesAdded += 1
+			if (abs(int(lineInfos[4])) <= 1009843261):
+				if lineInfos[0] not in nodeList:
+					nodeET = ET.SubElement(graphET,'node')
+					nodeET.set('id',lineInfos[0])
+					nodeList.append(lineInfos[0])
+					nodesAdded += 1
+				if lineInfos[1] not in nodeList:
+					nodeET = ET.SubElement(graphET,'node')
+					nodeET.set('id',lineInfos[1])
+					nodeList.append(lineInfos[1])
+					nodesAdded +=1
+				edgeET = ET.SubElement(graphET,'edge')
+				edgeET.set('source',lineInfos[0])
+				edgeET.set('target',lineInfos[1])
+				dataET = ET.SubElement(edgeET, 'data')
+				dataET.set('key','d0')
+				dataET.text = str(abs(int(lineInfos[4])))
+				edgesAdded += 1
 			
 	print "Nodes added = ",nodesAdded
 	print "Edges added = ", edgesAdded
