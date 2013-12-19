@@ -12,7 +12,7 @@ graph.g.list_properties()
 
 print(graph.g)
 
-initVertex = [56369, 64322]
+initVertex = [61191, 14661]
 probability = 1
 totalSteps = 25
 stepsEachTime = 3
